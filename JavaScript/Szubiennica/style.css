@@ -27,16 +27,19 @@ body
 	
 #szubienica
 {
-		flow: left;
-		width: 450px;
+		flow: right;
+		margin-top: 50px;
+		width: 900px;
 		text-align: center;
 		min-height: 280px;
 }
 	
 #alfabet
 {
-	flow: left;
-	width: 450px;
+	flow: right;
+	margin-top: 50px;
+	margin-left: 250px;
+	width: 800px;
 	text-align: center;
 	min-height: 280px;
 }

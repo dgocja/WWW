@@ -1,4 +1,22 @@
-var haslo = "Bez pracy nie ma kołaczy";
+var haslo = "Kto szuka nie błądzi";
+
+hasla = new Array(
+  'Kto szuka nie błądzi',
+  'Bez pracy nie ma kołaczy',
+  'Sukces ma wielu ojców porażka jest sierotą',
+  'Lepsza rozwaga niż odwaga',
+  'Modli się pod figurą a diabła ma za skórą',
+  'Kto nie idzie naprzód, ten się cofa',
+  'Jak cię widzą tak cię piszą',
+  'Prosta droga najkrótsza',
+  'Potrzeba jest matką wynalazków',
+  'Ziarnko do ziarnka zbierze się miarka'
+);
+ los = Math.round(Math.random()*(hasla.length-1));
+//document.write(hasla[los]);
+
+haslo = hasla[los];
+
 haslo = haslo.toUpperCase();
 
 var dlugosc = haslo.length;

@@ -1,6 +1,7 @@
 var haslo = "Kto szuka nie błądzi";
 
 hasla = new Array(
+  'Z niejednego pieca cheb jadł',
   'Kto szuka nie błądzi',
   'Bez pracy nie ma kołaczy',
   'Sukces ma wielu ojców porażka jest sierotą',

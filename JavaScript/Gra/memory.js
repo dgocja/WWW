@@ -31,8 +31,13 @@ c9.addEventListener("click", function() {revealCard(9); });
 c10.addEventListener("click", function() {revealCard(10); });
 c11.addEventListener("click", function() {revealCard(11); });
 
+var  onevisible = false;
+var  turn Counter = 0;
 
 function revealCard(nr)
 {
-	alert(nr);
+	//alert(nr);
+	var obraz = "url(img/"+card[nr]  + ")";
+	
+	$('#c'+nr).css('background-image', obraz);
 }

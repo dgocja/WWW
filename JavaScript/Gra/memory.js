@@ -1,4 +1,4 @@
-var cards = ["ciri.png", "geralt.png", "jaskier.png", "jaskier.png", "iorveth.png", "triss.png", "geralt.png", "yen.png", "ciri.png", "triss.png", "yen.png", "iorveth.png"];
+var cards = ["ciri.png", "geralt.png", "jaskier.png", "jaskier.png", "iorweth.png", "triss.png", "geralt.png", "yen.png", "ciri.png", "triss.png", "yen.png", "iorweth.png"];
 
 //alert(cards[4]);
 
@@ -31,13 +31,65 @@ c9.addEventListener("click", function() {revealCard(9); });
 c10.addEventListener("click", function() {revealCard(10); });
 c11.addEventListener("click", function() {revealCard(11); });
 
-var  onevisible = false;
-var  turn Counter = 0;
+var  oneVisible = false;
+var  turnCounter = 0;
 
 function revealCard(nr)
 {
-	//alert(nr);
-	var obraz = "url(img/"+card[nr]  + ")";
+	var opacityValue = $('#c'+nr).css('opacity')
+	//alert(opacityValue);
+	if (opacityValue !=0)
+	{
+		//alert(nr);
+	var obraz = "url(img/" + cards[nr]  + ")";
 	
-	$('#c'+nr).css('background-image', obraz);
+	$('#c'+nr).css('background-image' , obraz);
+	$('#c'+nr).addClass('cardA');
+	//$('#c'+nr).removeClass('cardA');
+	
+	if(oneVisible ==false)
+	{
+		//first card
+		oneVisible = true;
+		visible_nr = nr;
+	}
+	else
+	{
+		//second card
+		if(cards[visible_nr] == cards[nr])
+		{
+			//alert("para")
+			setTimeout(function() {hide2cards(nr, visible_nr)}, 750)
+
+		}
+		else
+		{
+			//alert("pudło")
+			setTimeout(function() {restore2cards(nr, visible_nr)}, 1000)
+		}
+		turnCounter++;
+		$('.score').html('Turn counter: ' +turnCounter)
+		oneVisible = false;
+		
+	}
+}
+			
+	}
+	
+function hide2cards(nr1, nr2)
+{
+	$('#c'+nr1).css('opacity', 0);
+	$('#c'+nr2).css('opacity', 0);
+}
+
+
+function restore2cards(nr1, nr2)
+{
+	$('#c'+nr1).css('background-image' , 'url(img/karta.png)');
+	$('#c'+nr1).addClass('card');
+	$('#c'+nr1).removeClass('cardA');
+	
+	$('#c'+nr2).css('background-image' , 'url(img/karta.png)');
+	$('#c'+nr2).addClass('card');
+	$('#c'+nr3).removeClass('cardA');
 }

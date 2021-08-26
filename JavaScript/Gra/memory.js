@@ -31,6 +31,7 @@ c9.addEventListener("click", function() {revealCard(9); });
 c10.addEventListener("click", function() {revealCard(10); });
 c11.addEventListener("click", function() {revealCard(11); });
 
+
 var  oneVisible = false;
 var  turnCounter = 0;
 

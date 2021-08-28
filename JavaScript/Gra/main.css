@@ -7,7 +7,7 @@ body
 	font-size: 28px;
 }
 
-a:link			{	color: #209781; texdecoratio: none;	}
+a:link			{	color: #209781; text-decoration: none;	}
 a:visited 	{	color: #209781;	}
 a:active		{	color: #209781;	}
 a:hover		{	color: #E9B64A;	}

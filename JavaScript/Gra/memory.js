@@ -34,53 +34,59 @@ c11.addEventListener("click", function() {revealCard(11); });
 
 var  oneVisible = false;
 var  turnCounter = 0;
+var visible_nr;
+var lock = false;
 
 function revealCard(nr)
 {
-	var opacityValue = $('#c'+nr).css('opacity')
+	var opacityValue = $('#c'+nr).css('opacity');
 	//alert(opacityValue);
-	if (opacityValue !=0)
+	if (opacityValue !=0 && lock == false)
 	{
+		lock = true;
 		//alert(nr);
-	var obraz = "url(img/" + cards[nr]  + ")";
+		var obraz = "url(img/" + cards[nr]  + ")";
 	
-	$('#c'+nr).css('background-image' , obraz);
-	$('#c'+nr).addClass('cardA');
-	//$('#c'+nr).removeClass('cardA');
+		$('#c'+nr).css('background-image' , obraz);
+		$('#c'+nr).addClass('cardA');
+		$('#c'+nr).removeClass('card');
 	
-	if(oneVisible ==false)
-	{
-		//first card
-		oneVisible = true;
-		visible_nr = nr;
-	}
-	else
-	{
-		//second card
-		if(cards[visible_nr] == cards[nr])
+		if(oneVisible ==false)
 		{
-			//alert("para")
-			setTimeout(function() {hide2cards(nr, visible_nr)}, 750)
-
+			//first card
+			oneVisible = true;
+			visible_nr = nr;
+			lock = false;
 		}
 		else
 		{
-			//alert("pudło")
-			setTimeout(function() {restore2cards(nr, visible_nr)}, 1000)
-		}
-		turnCounter++;
-		$('.score').html('Turn counter: ' +turnCounter)
-		oneVisible = false;
+			//second card
+			if(cards[visible_nr] == cards[nr])
+			{
+				//alert("para")
+				setTimeout(function() {hide2cards(nr, visible_nr)}, 750);
+
+			}
+			else
+			{
+				//alert("pudło")
+				setTimeout(function() {restore2cards(nr, visible_nr)}, 1000);
+			}
+			turnCounter++;
+			$('.score').html('Turn counter: ' +turnCounter);
+			oneVisible = false;
 		
+			}
 	}
-}
 			
-	}
+}
 	
 function hide2cards(nr1, nr2)
 {
-	$('#c'+nr1).css('opacity', 0);
-	$('#c'+nr2).css('opacity', 0);
+	$('#c'+nr1).css('opacity', '0');
+	$('#c'+nr2).css('opacity', '0');
+	
+	lock = false;
 }
 
 
@@ -93,4 +99,6 @@ function restore2cards(nr1, nr2)
 	$('#c'+nr2).css('background-image' , 'url(img/karta.png)');
 	$('#c'+nr2).addClass('card');
 	$('#c'+nr3).removeClass('cardA');
+	
+	lock = false;
 }

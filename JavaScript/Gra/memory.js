@@ -36,6 +36,7 @@ var  oneVisible = false;
 var  turnCounter = 0;
 var visible_nr;
 var lock = false;
+var pairLeft = 6;
 
 function revealCard(nr)
 {
@@ -71,12 +72,13 @@ function revealCard(nr)
 			{
 				//alert("pudło")
 				setTimeout(function() {restore2cards(nr, visible_nr)}, 1000);
+				
 			}
 			turnCounter++;
-			$('.score').html('Turn counter: ' +turnCounter);
+			$(' .score').html('Turn counter: ' +turnCounter);
 			oneVisible = false;
 		
-			}
+		}
 	}
 			
 }
@@ -85,6 +87,13 @@ function hide2cards(nr1, nr2)
 {
 	$('#c'+nr1).css('opacity', '0');
 	$('#c'+nr2).css('opacity', '0');
+	
+	pairLeft --;
+	
+	if(pairLeft == 0)
+	{
+		$('.board').html('<h1> You win <br> Done in '+ turnCounter+'  turns</h1>');
+	}
 	
 	lock = false;
 }
@@ -98,7 +107,7 @@ function restore2cards(nr1, nr2)
 	
 	$('#c'+nr2).css('background-image' , 'url(img/karta.png)');
 	$('#c'+nr2).addClass('card');
-	$('#c'+nr3).removeClass('cardA');
+	$('#c'+nr2).removeClass('cardA');
 	
 	lock = false;
 }
